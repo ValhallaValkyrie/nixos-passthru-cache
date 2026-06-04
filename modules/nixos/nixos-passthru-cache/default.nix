@@ -205,8 +205,6 @@ in
         '';
       };
     };
-    // lib.optionalAttrs (lib.versionOlder (lib.versions.majorMinor lib.version) "26.05") {
-      params.nginx = { };
     };
 
   };
