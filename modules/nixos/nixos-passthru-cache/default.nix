@@ -131,12 +131,6 @@ in
             if config.networking.nameservers == [ ] then cloudflare else config.networking.nameservers;
         in
         map escapeIPv6 resolvers;
-
-      sslDhparam =
-        if (lib.versionOlder (lib.versions.majorMinor lib.version) "26.05") then
-          config.security.dhparams.params.nginx.path
-        else
-          true;
     };
 
     services.nginx.virtualHosts."nixos-passthru-cache" = {
@@ -211,9 +205,6 @@ in
         '';
       };
     };
-    security.dhparams = {
-      enable = true;
-    }
     // lib.optionalAttrs (lib.versionOlder (lib.versions.majorMinor lib.version) "26.05") {
       params.nginx = { };
     };
